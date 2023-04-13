@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react'
+import Form from './components/Form';
+
+
 
 function App() {
+
+  const [members, setMembers] = useState([])
+  const [values, setValues] = useState({name:'', email:'', role:''})
+
+ const onSubmit = () => {
+    setMembers([values, ...members])
+  }
+
+  const onChange = (name, value) =>{
+    setValues({...values, [name]: value})
+  }
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1> Practice in building websites with create react app</h1>\
+     <Form>
+      change={onChange}
+      submit={onSubmit}
+      values={values}
+      
+     </Form>
     </div>
   );
 }
