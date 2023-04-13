@@ -10,6 +10,7 @@ function App() {
 
  const onSubmit = () => {
     setMembers([values, ...members])
+    setValues({name:'', email:'', role:''})
   }
 
   const onChange = (name, value) =>{
@@ -19,13 +20,20 @@ function App() {
 
   return (
     <div className="App">
-      <h1> Practice in building websites with create react app</h1>\
-     <Form>
-      change={onChange}
-      submit={onSubmit}
-      values={values}
+      <h1> Practice in building websites with create react app</h1>
+     <Form
+     change={onChange}
+     submit={onSubmit}
+     values={values}
+     >
       
      </Form>
+
+     {members.map((member, idx) =>{
+      return(
+        <div key={idx}> {member.email}, {member.name}, {member.role}</div>
+      )
+     })}
     </div>
   );
 }
